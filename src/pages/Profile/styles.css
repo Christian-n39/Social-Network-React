@@ -1,0 +1,29 @@
+.Profile {
+  width: 70%;
+}
+.Profile-hero {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  box-shadow: 0 0 white;
+}
+.Profile-hero img {
+  width: 195px;
+  border-radius: 239px;
+  margin-right: 5%;
+}
+.Profile-hero-details {
+  width: 60%;
+}
+.Profile-hero-details h3 {
+  font-size: 39px;
+  margin-bottom: 30px;
+}
+.Profile-hero-details ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+.Profile-hero-details ul li {
+
+}

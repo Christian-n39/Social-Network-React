@@ -1,0 +1,13 @@
+.Profile-posts-grid {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.Profile-posts-grid img {
+  margin: 10px;
+  border-radius: 10px;
+  width: 193px;
+  height: 193px;
+}

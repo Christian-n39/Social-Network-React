@@ -1,0 +1,25 @@
+.Navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 16px;
+  left: 21px;
+  height: 110vh;
+  position: fixed;
+}
+.Navbar-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  height: 30%;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+.Navbar-nav-option {
+  padding: 14px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 23px;
+}

@@ -1,0 +1,59 @@
+.LoginForm {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  align-items: center;
+}
+
+.inputWrapper {
+  padding: 14px;
+  margin: 10px 0;
+  width: 100%;
+  background: #292935;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 7px;
+}
+
+.Login input {
+  font-family: inherit;
+  border: none;
+  border-bottom: 1px solid #ffffff;
+  outline: none;
+  background: transparent;
+  padding: 5px;
+  width: 80%;
+  color: #ffffff;
+}
+.Login input:focus {
+  border-bottom: 1px solid #1da1f2;
+  background-color: transparent;
+}
+.Login input::placeholder{
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.Login button {
+  padding: 8px;
+  color: white;
+  background-color: #1da1f2;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  margin: 10px;
+}
+.Login button:hover {
+  background-color: #3fe7e7;
+  cursor: pointer;
+}
+.Link-toRegister {
+  color: #1da1f2;
+  font-weight: 800;
+  text-shadow: 0 0 4px black;
+  font-size: 18px;
+}
