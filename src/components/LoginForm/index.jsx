@@ -5,15 +5,18 @@ import './styles.css'
 import { FaUserAlt } from 'react-icons/fa';
 import { BsFillLockFill } from 'react-icons/bs';
 
-export default function LoginForm() {
+export default function LoginForm({ handleSubmit }) {
   const [user, setUser] = useState({ email: '', password: ''})
 
   const handleChange = (key, value) => {
     setUser({ ...user, [key]: value })
   }
-console.log(user)
+  const submit = (e) => {
+    e.preventDefault();
+    handleSubmit(user)
+  }
   return (
-    <form className="LoginForm">
+    <form onSubmit={e => submit(e)} className="LoginForm">
       <div className="inputWrapper">
         <FaUserAlt size='30px' color={ user.email !== ''? 'black' : '#8080807d' } />
         <input 

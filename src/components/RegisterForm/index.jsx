@@ -5,13 +5,25 @@ import { AiOutlineMail, AiFillLock } from 'react-icons/ai';
 import { BsFillLockFill } from 'react-icons/bs';
 import './styles.css';
 
-export default function RegisterForm() {
-  const [user, setUser] = useState({ password: '', confirmPassword: '', email: '' })
+export default function RegisterForm({ handleSubmit }) {
+  const [user, setUser] = useState({ name: '', password: '', confirmPassword: '', email: '' })
   const handleChange = (key, value) => {
     setUser({ ...user, [key]: value })
   }
+  const submit = (e) => {
+    e.preventDefault();
+    handleSubmit(user)
+  }
   return (
-    <form className="RegisterForm">
+    <form onSubmit={e => submit(e)} className="RegisterForm">
+      <div className="inputWrapper">
+        <FaUserAlt size='30px' color={user.name !== '' ? 'black' : '#8080807d'} />
+        <input 
+          placeholder='Name'
+          type='name' 
+          onChange={e => handleChange('name', e.target.value)} 
+          />
+      </div>
       <div className="inputWrapper">
         <AiOutlineMail size='30px' color={user.email !== '' ? 'black' : '#8080807d'} />
         <input 
