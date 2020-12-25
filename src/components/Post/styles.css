@@ -29,6 +29,11 @@
 .Post-user span {
   margin-right: 15px;
 }
+.Delete-post {
+  cursor: pointer;
+  margin: 5px;
+}
+
 .Post-body {
   display: flex;
   flex-direction: column;

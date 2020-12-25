@@ -5,7 +5,7 @@ import axios from 'axios';
 import moment from 'moment';
 
 
-export default function Posts({ posts, updateLike }) {
+export default function Posts({ posts, updateLike, updatePosts }) {
   const token = useSelector(state => state.token)
   const user = useSelector(state => state.user)
 
@@ -29,10 +29,29 @@ export default function Posts({ posts, updateLike }) {
         console.log(err)
       })
   }
+  const handleDelete = (postId) => {
+    axios('/deletepost', {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      data: {postId}
+    })
+      .then(res => {
+        updatePosts(res.data)
+      })
+      .catch(err => {
+        if(err.response && err.response.data.message == 'Expired or invalid token') {
+          window.localStorage.removeItem('token')
+          window.location='/'
+        }
+        console.log(err)
+      })
+  }
   const postsSortedByDate = posts.sort((a, b) => new moment(a.createdAt).format('YYYYMMDD') - new moment(b.createdAt).format('YYYYMMDD'))
   return (
     postsSortedByDate.map(post => (
-      <Post key={post._id} post={post} isLiked={post.likes.find(userLike => userLike.username == user.name)} handleLike={handleLike} />
+      <Post key={post._id} post={post} isMine={user.name == post.user.name} isLiked={post.likes.find(userLike => userLike.username == user.name)} handleLike={handleLike} handleDelete={newData => handleDelete(newData)} />
     ))
   )
 }

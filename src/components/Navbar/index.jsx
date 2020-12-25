@@ -24,13 +24,13 @@ export default function Navbar() {
         <section className='Navbar' id="Navbar" >
           <img className="Navbar-logo" src={logo} alt='Logo' height='80' width='215px' />
           <nav className="Navbar-nav">
-            <Link to='/home' className="Navbar-nav-option background-blue" >
+            <Link to='/home' className="Navbar-nav-option background-blue" onClick={() => setShowMenu(false)} >
               <p>Home</p>
             </Link>
-            <Link to='/profile'  className="Navbar-nav-option background-blue" >
+            <Link to='/profile'  className="Navbar-nav-option background-blue" onClick={() => setShowMenu(false)} >
               <p>Profile</p>
             </Link>
-            <Link to='/create' className="Navbar-nav-option background-blue" >
+            <Link to='/create' className="Navbar-nav-option background-blue" onClick={() => setShowMenu(false)} >
               <p>Create a post</p>
             </Link>
           </nav>

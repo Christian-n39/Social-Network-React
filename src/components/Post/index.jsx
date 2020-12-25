@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import './styles.css';
 import moment from 'moment';
 import { FaRegCommentDots } from 'react-icons/fa';
+import { AiOutlineDelete } from 'react-icons/ai'
 
-export default function Post({post: { _id, title, body, createdAt, photo, user, likes }, handleLike, isLiked}) {
-
+export default function Post({post: { _id, title, body, createdAt, photo, user, likes }, handleLike, isLiked, isMine, handleDelete}) {
   return (
     <article className="Post" >
       <div className="Post-user" >
@@ -14,6 +14,10 @@ export default function Post({post: { _id, title, body, createdAt, photo, user, 
           <p>{user.name}</p>
         </div>
         <span>{moment(createdAt).fromNow()}</span>
+        {
+          isMine &&
+            <AiOutlineDelete className="Delete-post" size='40px' color='red' onClick={() => handleDelete(_id)} />
+        }
       </div>
       <div className="Post-body" >
         <h2>{title}</h2>

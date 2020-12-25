@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import axios from 'axios';
 import Posts from '../../containers/Posts';
 import './styles.css';
@@ -36,6 +37,10 @@ export default function Home() {
       return item
     }))
   }
+  const updatePosts = (newData) => {
+    setPosts(newData);
+    toast.info('Post deleted successfully')
+  }
   return (
     <section className="Home">
       {
@@ -43,7 +48,7 @@ export default function Home() {
           ? ''
           : 
           posts.length !== 0 &&
-          <Posts posts={posts} updateLike={updateLike} />
+          <Posts posts={posts} updateLike={updateLike} updatePosts={updatePosts} />
       }
     </section>
   )
