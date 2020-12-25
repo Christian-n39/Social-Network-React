@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
@@ -8,13 +8,17 @@ import { BsFilePost } from 'react-icons/bs'
 import './styles.css';
 
 export default function CreatePost() {
+  const user = useSelector(state => state.user)
+  if(!user) window.location='/';
   const history = useHistory()
-  const [post, setPost] = useState({ title: '', body: '', image: '', url: '' });
+  const bodyInput = useRef(null)
+  const [post, setPost] = useState({ title: '', body: '', image: '' });
   const handleChange = (key, value) => {
     setPost({...post, [key]: value})
   }
   const postDetails = (e) => {
     e.preventDefault()
+    if(!post.title, !post.body, !post.image) { toast.info('Fields must not be empty'); return false }
     const data = new FormData();
     data.append('file', post.image)
     data.append('upload_preset', 'socialmern')
@@ -24,16 +28,14 @@ export default function CreatePost() {
       data
     })
       .then(res => {
-        console.log(res.data.url)
-        setPost({ ...post, url: res.data.url })
-        sendPost()
+        sendPost(res.data.url)
       })
       .catch(err => {
         console.log(err.response)
       })
   }
   const token = useSelector(state => state.token);
-  const sendPost = () => {
+  const sendPost = (url) => {
     axios('/createPost', {
       method: 'POST',
       headers: {
@@ -42,7 +44,7 @@ export default function CreatePost() {
       data: {
         title: post.title,
         body: post.body,
-        url: post.url
+        url
       }
     })
       .then((res) => {
@@ -70,10 +72,10 @@ export default function CreatePost() {
           <div className="Create-form-inputWrapper" >
             <input className="Create-form-input" onChange={e => handleChange('title', e.target.value)} type="text" placeholder="Title" name="title"/>
           </div>
-          <div className="Create-form-inputWrapper">
-            <input className="Create-form-input" onChange={e => handleChange('body', e.target.value)} type="text" placeholder="Body" name="body" />
+          <div className="Create-form-inputWrapper" >
+            <input className="Create-form-input" onChange={e => handleChange('body', e.target.value)} type="text" placeholder="Title" name="body"/>
           </div>
-          <input 
+          <input
             className="Create-form-input-image"
             type="file"
             onChange={e=> handleChange('image', e.target.files[0])}

@@ -6,6 +6,7 @@
   align-items: center;
   padding: 10px;
   box-shadow: 0 0 white;
+  flex-wrap: wrap;
 }
 .Profile-hero img {
   width: 195px;
@@ -27,3 +28,11 @@
 .Profile-hero-details ul li {
 
 }
+.Profile-posts-grid {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+

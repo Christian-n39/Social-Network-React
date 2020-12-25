@@ -24,7 +24,9 @@ export default function Login() {
         setUser(token)
         history.push('/home')
       })
-      .catch(err => toast.info(err.response.data.message))
+      .catch(err => {
+        toast.info(err.response.data.message)
+      })
   }
   const loggedUser = useSelector(state => state.user);
   if(loggedUser) history.push('/home');

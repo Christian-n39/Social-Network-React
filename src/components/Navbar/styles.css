@@ -1,3 +1,10 @@
+.Burger-menu {
+  z-index: 3;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  display: none;
+}
 .Navbar {
   display: flex;
   flex-direction: column;
@@ -22,4 +29,36 @@
   display: flex;
   justify-content: space-around;
   border-radius: 23px;
+}
+.Navbar-nav-option:hover {
+  background-color: #6cc1f5;
+}
+.Logout {
+  position: relative;
+  bottom: -145px;
+  padding: 10px;
+  border: 1px solid #e0245e;
+  color: #e0245e;
+  width: 80%;
+  text-align: center;
+}
+
+.Logout:hover {
+  background-color: #e0245e;
+  color: white;
+  cursor: pointer;
+}
+.none {
+  display: none;
+}
+
+@media (max-width: 839px) {
+  .Burger-menu {
+    display: block;
+  }
+  .Navbar {
+    width: 100%;
+    background-color: #171f2c;
+    z-index: 2;
+  }
 }

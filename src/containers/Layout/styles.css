@@ -5,3 +5,8 @@
   padding-right: 5%;
   max-width: 1290px;
 }
+@media (max-width: 839px) {
+  .Layout {
+    justify-content: center;
+  }
+}

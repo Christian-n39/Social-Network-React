@@ -49,6 +49,11 @@
   padding: 10px;
   width: 100%;
 }
+.Body {
+  border: 3px solid #ffffff; 
+  width: 100%;
+  min-height: 50px;
+}
 
 .Create-form-input {
   font-family: inherit;
